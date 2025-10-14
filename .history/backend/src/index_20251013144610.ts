@@ -6,8 +6,6 @@ import routes from "./route/index";
 dotenv.config();
 connectDb();
 const port = process.env.PORT || 8000;
-app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // we can pass data to url part too
 
 app.use("/api/v1", routes);
 app.listen(port, () => {
