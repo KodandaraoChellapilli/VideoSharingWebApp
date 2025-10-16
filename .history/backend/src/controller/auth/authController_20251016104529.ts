@@ -23,7 +23,7 @@ export const signUpUser: RequestHandler = async (req: RegisterRequest, res) => {
       //do nothing
       return sendResponse(res, 400, false, "User already exists");
     }
-    const hashedPassword = await hashPassword(password);
+    const hashedPassword = await hashPassord(password);
     const newUser = await User.create({
       email,
       password: hashedPassword,

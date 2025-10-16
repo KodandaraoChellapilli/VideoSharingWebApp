@@ -20,26 +20,23 @@ export const signUpUser: RequestHandler = async (req: RegisterRequest, res) => {
     const { email, password } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      //do nothing
       return sendResponse(res, 400, false, "User already exists");
     }
+
+    // ✅ Corrected function name
     const hashedPassword = await hashPassword(password);
+
     const newUser = await User.create({
       email,
       password: hashedPassword,
       token: crypto.randomBytes(16).toString("hex"),
     });
 
-    //send response of successful
-
     return sendResponse(res, 200, true, "User Created successfully", {
       user: newUser,
     });
   } catch (error) {
     console.error(`Error in signing up the user: ${error}`);
-
-    //send fairlure response
-
     return sendResponse(res, 500, false, "Internal server error");
   }
 };
