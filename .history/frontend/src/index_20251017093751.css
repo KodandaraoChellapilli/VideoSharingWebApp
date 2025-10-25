@@ -1,0 +1,4 @@
+@import "tailwindcss/preflight"; /* replaces @tailwind base */
+@import "tailwindcss/utilities"; /* replaces both @tailwind components and utilities */
+
+/* You can add your own custom CSS below if needed */
